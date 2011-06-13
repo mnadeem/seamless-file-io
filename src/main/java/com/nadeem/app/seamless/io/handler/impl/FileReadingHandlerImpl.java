@@ -12,12 +12,12 @@ import com.nadeem.app.seamless.io.session.SessionFactory;
 public class FileReadingHandlerImpl implements FileReadingHandler {
 
 	private final SessionFactory sessionFactory;
-	
-	public FileReadingHandlerImpl(SessionFactory newSessionFactory) {
+
+	public FileReadingHandlerImpl(final SessionFactory newSessionFactory) {
 		this.sessionFactory = newSessionFactory;
 	}
-	
-	public ByteArrayOutputStream readFile(String source) {
+
+	public ByteArrayOutputStream readFile(final String source) {
 		Session session = null;
 		try {
 			session = this.sessionFactory.getSession();
@@ -29,6 +29,6 @@ public class FileReadingHandlerImpl implements FileReadingHandler {
 		} finally {
 			IOUtils.closeQuietly(session);
 			// no need to close outputStream
-		}		
+		}
 	}
 }

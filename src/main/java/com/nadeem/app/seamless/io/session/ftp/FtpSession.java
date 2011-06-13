@@ -30,7 +30,7 @@ public class FtpSession implements Session {
 	public boolean rename(String pathFrom, String pathTo) throws IOException{
 		client.deleteFile(pathTo);
 		return client.rename(pathFrom, pathTo);
-	}	
+	}
 
 	public void read(String path, OutputStream outputStream) throws IOException{
 		boolean completed = this.client.retrieveFile(path, outputStream);
@@ -39,16 +39,15 @@ public class FtpSession implements Session {
 
 	public void write(InputStream inputStream, String path) throws IOException{
 		boolean completed = client.storeFile(path, inputStream);
-		throwExceptionIfNotCompleted("Failed to write to '" + path + "'", completed);				
+		throwExceptionIfNotCompleted("Failed to write to '" + path + "'", completed);
 	}
 
 
 	public void close() {
 		try {
 			this.client.disconnect();
-		}
-		catch (Exception e) {
-			//keep quiet	
+		} catch (Exception e) {
+			//keep quiet
 		}
 	}
 
@@ -62,8 +61,8 @@ public class FtpSession implements Session {
 	}
 
 	private void throwExceptionIfNotCompleted(String message, boolean completed) throws IOException {
-		if (!completed){
+		if (!completed) {
 			throw new IOException(message + ". Server replied with: " + client.getReplyString());
 		}
-	}	
+	}
 }

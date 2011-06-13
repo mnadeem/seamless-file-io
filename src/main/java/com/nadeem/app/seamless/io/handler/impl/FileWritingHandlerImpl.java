@@ -13,14 +13,14 @@ import com.nadeem.app.seamless.io.session.SessionFactory;
 public class FileWritingHandlerImpl implements FileWritingHandler {
 
 	private static final String TEMPORARY_FILE_SUFFIX =".writing";
-	
+
 	private final SessionFactory sessionFactory;
 
 	public FileWritingHandlerImpl(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
 	}
 
-	public boolean writeToFile(InputStream inputStream, FileWritingConfig config) {		
+	public boolean writeToFile(InputStream inputStream, FileWritingConfig config) {
 		Session session = null;
 		try {
 			String tempFileName = config.getAbsoluteFileName() + TEMPORARY_FILE_SUFFIX;

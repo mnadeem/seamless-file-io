@@ -27,7 +27,7 @@ public class FtpSessionFactory implements SessionFactory {
 	public void setConfig(FTPClientConfig config) {
 		this.config = config;
 	}
-	
+
 	public void setBufferSize(int bufferSize) {
 		this.bufferSize = bufferSize;
 	}
@@ -49,7 +49,7 @@ public class FtpSessionFactory implements SessionFactory {
 	}
 
 	/**
-	 * File types defined by {@link org.apache.commons.net.ftp.FTP} constants.	
+	 * File types defined by {@link org.apache.commons.net.ftp.FTP} constants.
 	 */
 	public void setFileType(int fileType) {
 		this.fileType = fileType;
@@ -82,10 +82,10 @@ public class FtpSessionFactory implements SessionFactory {
 	private FTPClient createClient() throws SocketException, IOException { 
 		FTPClient client = this.createClientInstance();
 		client.configure(this.config);
-		
-		this.postProcessClientBeforeConnect(client);		
-		doConnect(client);	
-		doLogin(client);		
+
+		this.postProcessClientBeforeConnect(client);
+		doConnect(client);
+		doLogin(client);
 		this.postProcessClientAfterConnect(client);
 
 		doSetup(client);
@@ -101,14 +101,14 @@ public class FtpSessionFactory implements SessionFactory {
 
 	private void doLogin(final FTPClient client) throws IOException {
 		if (!client.login(username, password)) {
-			throw new IllegalStateException("Login failed. The response from the server is: " + 
+			throw new IllegalStateException("Login failed. The response from the server is: " +
 					client.getReplyString());
 		}
 	}
 
 	private void doConnect(final FTPClient client) throws SocketException, IOException {
 		client.connect(host, port);
-		
+
 		if (!FTPReply.isPositiveCompletion(client.getReplyCode())) {
 			throw new RuntimeException("Connecting to server [" +
 					host + ":" + port + "] failed. Please check the connection.");
@@ -118,7 +118,7 @@ public class FtpSessionFactory implements SessionFactory {
 	/**
 	 * Sets the mode of the connection. Only local modes are supported.
 	 */
-	private void updateClientMode(FTPClient client) {
+	private void updateClientMode(final FTPClient client) {
 		switch (this.clientMode) {
 			case FTPClient.ACTIVE_LOCAL_DATA_CONNECTION_MODE:
 				client.enterLocalActiveMode();
@@ -134,8 +134,8 @@ public class FtpSessionFactory implements SessionFactory {
 	protected FTPClient createClientInstance() {
 		return new FTPClient();
 	}
-	
+
 	protected void postProcessClientBeforeConnect(FTPClient client) throws IOException {}
 	protected void postProcessClientAfterConnect(FTPClient t) throws IOException {}
-	
+
 }

@@ -11,9 +11,9 @@ import java.io.OutputStream;
 import org.apache.commons.io.IOUtils;
 
 public class DefaultFileSession implements Session {
-	
+
 	private File parent;
-	
+
 	public DefaultFileSession(File newParent) {
 		this.parent = newParent;
 	}
@@ -22,7 +22,7 @@ public class DefaultFileSession implements Session {
 	public File[] list(String path) throws IOException {
 		return this.parent.listFiles();
 	}
-	
+
 	public boolean remove(String path) throws IOException {
 		File fileToBeDeleted = createNewFile(path);
 		if (fileToBeDeleted.exists()) {
