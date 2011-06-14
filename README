@@ -1,1 +1,3 @@
 seamlessly access files from the file system, through FTP (multiple FTP APIs can be used)
+This is basically in response to 
+http://stackoverflow.com/questions/5263381/ftp-design-pattern
