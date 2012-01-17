@@ -74,6 +74,9 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-checkstyle-plugin</artifactId>
 				<version>2.8</version>
+				<configuration>
+					<configLocation>${project.basedir}\etc\checkstyle-rules.xml</configLocation>
+				</configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -81,6 +84,7 @@
 				<version>2.4</version>
 				<configuration>
 					<targetJdk>1.5</targetJdk>
+					<ruleset>${project.basedir}\etc\pmd-rules.xml</ruleset>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -120,6 +124,9 @@
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-checkstyle-plugin</artifactId>
 						<version>2.8</version>
+						<configuration>
+							<configLocation>${project.basedir}\etc\checkstyle-rules.xml</configLocation>
+						</configuration>
 						<executions>
 							<execution>
 								<goals>
@@ -132,6 +139,10 @@
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-pmd-plugin</artifactId>
 						<version>2.4</version>
+						<configuration>
+							<targetJdk>1.5</targetJdk>
+							<ruleset>${project.basedir}\etc\pmd-rules.xml</ruleset>
+						</configuration>
 						<executions>
 							<execution>
 								<goals>
